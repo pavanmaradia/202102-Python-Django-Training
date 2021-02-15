@@ -1,10 +1,6 @@
 """
 Looping structure part 2
     conditional loop
-    break statement
-    continue statement
-    list Comprehension
-    dictionary Comprehension
 
 Assignments:
     a)                  b)              c)                  d)
@@ -34,4 +30,33 @@ Assignments:
     *   *   *           1 0 1 0 1       c-b-a-b-c
     *       *           1 0 1 0 1       --c-b-c--
     *       *           1 0 1 0 1       ----c----
+"""
+x = [1, 2, 3, 4, 5]
+y = [1, 2, 3, 4, 5]
+
+# for i in x:
+#     for j in y:
+#         if i % 2 == 0:
+#             print("1", end=" ")
+#         else:
+#             print("0", end=" ")
+#     print("")
+
+for i in range(1, 6):
+    for j in range(1, i + 1):
+        print((i+j) % 2, end=" ")
+    print("")
+
+
+"""
+i = 3
+j = 1
+
+i+j = 4 % 2 = 0
+
+
+----------------- o/p -------
+0
+1 0 
+0
 """
