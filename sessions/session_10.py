@@ -22,17 +22,20 @@ class <ClassName>(<BaseClass/es>):
 #
 # _class = MyFirstClass()
 # _class.main()
+def test():
+    return ""
 
 class MySecondClass:
 
     def __init__(self):
-        # self.name = None
+        self.name = None
         print('You are in init method')
 
     def main(self, name):
         self.name = name
         print(F"name: {self.name}")
         print("Hello from main method of class MyFirstClass.")
+
 
     def __del__(self):
         print(F"Deleting {self.name}")
