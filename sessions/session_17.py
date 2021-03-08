@@ -21,7 +21,6 @@ def generate_xls_path(file_name=''):
     # else:
     #     raise Exception(FileNotFoundError)
 
-
 def parse_xlm_file(_file_path):
     try:
         wb_obj = openpyxl.load_workbook(_file_path)
@@ -29,6 +28,7 @@ def parse_xlm_file(_file_path):
         print(F"{_file_path} not found")
         return {}
     except PermissionError:
+
         print(F"{_file_path} don't have permission to access this file")
         return {}
     except Exception as error:
