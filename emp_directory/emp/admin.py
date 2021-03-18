@@ -5,10 +5,10 @@ from .models import Employee, City, State, Country
 
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'last_name', 'age', 'city']
+    list_display = ['id', 'first_name', 'last_name', 'age', 'city', 'state', 'country']
     search_fields = ('first_name', 'last_name')
     list_filter = ['age']
-    list_editable = ('age', 'first_name', 'city')
+    list_editable = ('age', 'city', 'state', 'country')
 
 
 class CityAdmin(admin.ModelAdmin):

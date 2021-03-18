@@ -15,6 +15,8 @@ class Employee(models.Model):
                              null=True)
     state = models.ForeignKey("State", on_delete=models.CASCADE, blank=True,
                               null=True)
+    country = models.ForeignKey("Country", on_delete=models.CASCADE, blank=True,
+                              null=True)
 
     def __str__(self):
         return F"{self.first_name} {self.last_name}"
