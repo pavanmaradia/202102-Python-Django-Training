@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Employee, City, State, Country
+from .models import Employee, City, State, Country, BankDetail, SkillSet, Accounts
 
 
 class EmployeeAdmin(admin.ModelAdmin):
@@ -26,7 +26,11 @@ class CountryAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
+
 admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(City, CityAdmin)
 admin.site.register(State, StateAdmin)
 admin.site.register(Country, CountryAdmin)
+admin.site.register(BankDetail)
+admin.site.register(SkillSet)
+admin.site.register(Accounts)
