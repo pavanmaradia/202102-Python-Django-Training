@@ -42,7 +42,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -71,6 +71,14 @@ WSGI_APPLICATION = 'emp_directory.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 DATABASES = {
     'default': {
@@ -117,17 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-"""
-DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.postgresql',
-'NAME': os.getenv('PGDATABASE'),
-'USER': os.getenv('PGUSER'),
-'PASSWORD': os.getenv('PGPASSWORD'),
-'HOST': os.getenv('PGHOST'),
-'PORT': os.getenv('PGPORT'),
-}
-}
-"""
+# STATICFILES_DIRS = (
+#     Path.joinpath(BASE_DIR, 'static')
+# )
