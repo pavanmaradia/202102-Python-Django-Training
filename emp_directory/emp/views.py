@@ -1,7 +1,10 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-from emp.models import Employee, City, State, Country
 import json
+
+from django.http import JsonResponse
+from django.shortcuts import render
+
+from emp.models import Employee, City, State, Country
+
 
 # Create your views here.
 
@@ -13,7 +16,7 @@ def system_health(request):
 
 def employee(request, emp_id=None):
     if request.method == 'GET':
-        if emp_id ==None:
+        if emp_id == None:
             response = employee_list(request)
         else:
             response = employee_get(emp_id)
@@ -21,7 +24,6 @@ def employee(request, emp_id=None):
         response = employee_create(request)
 
     return response
-
 
 
 def employee_get(emp_id):
@@ -100,5 +102,26 @@ def employee_create(request):
     emp = Employee.objects.create(**payload)
     return JsonResponse({'status': True})
 
-# def home(request):
-#     render(request)
+
+def home(request):
+    return render(request, 'home.html')
+
+
+def employee_create_page(request):
+    return render(request, 'employee_create.html')
+
+
+def employee_list_page(request):
+    response_data = []
+    for emp in Employee.objects.all():
+        _emp = {
+            'id': str(emp.id),
+            'first_name': emp.first_name,
+            'last_name': emp.last_name,
+            'age': emp.age,
+            'city': emp.city.name,
+            'state': emp.state.name,
+            'country': emp.country.name
+        }
+        response_data.append(_emp)
+    return render(request, 'employee_list.html', {'employee': response_data})
