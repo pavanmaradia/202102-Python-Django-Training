@@ -1,8 +1,10 @@
 import json
 
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
+from emp.forms import EmployeeForms, BankDetailsForms
 from emp.models import Employee, City, State, Country
 
 
@@ -14,6 +16,35 @@ def system_health(request):
                         safe=False)
 
 
+def create_bank_details(request):
+    form = BankDetailsForms(request.POST or None)
+
+    if form.is_valid():
+        form_data = form.cleaned_data
+        if len(form_data.get('bank_id')) > 4:
+            form.save()
+            form = BankDetailsForms()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'create_bank_details.html', context=context)
+
+
+def employee_form_view(request):
+    form = EmployeeForms(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = EmployeeForms()
+    context = {
+        'form':form
+    }
+
+    return render(request, 'employee_form.html', context)
+
+@login_required
+@permission_required(perm="employee.view_employee")
 def employee(request, emp_id=None):
     if request.method == 'GET':
         if emp_id == None:
@@ -24,6 +55,7 @@ def employee(request, emp_id=None):
         response = employee_create(request)
 
     return response
+
 
 
 def employee_get(emp_id):
